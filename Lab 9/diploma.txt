@@ -1,0 +1,4 @@
+        Se acorda premiul {}
+pentru rezultate deosebite la învățătură
+    elevului/elevei {}
+    Media de absolvire: {}

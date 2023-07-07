@@ -25,7 +25,7 @@ champs = {
     'Ionescu Geta': 8.34,
 }
 
-with open('diploma.txt', 'r') as file:
+with open('../Lab 8/diploma.txt', 'r') as file:
     diploma = file.read()
 
 for i, e in enumerate(sorted(champs, key=champs.get, reverse=True), start=1):
