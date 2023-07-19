@@ -6,13 +6,7 @@ import os
 
 no_dirs = 0
 no_files = 0
-for root, dirs, files in os.walk(os.getcwd()):
-    no_dirs += len(dirs)
-    no_files += len(files)
-    print(root)
-    print('Nr. folders: ', no_dirs)
-    print('Nr. files: ', no_files)
-print('**************************************')
+
 for root, dirs, files in os.walk('C:\\Users\\Ana\\Desktop\\Python'):
     no_dirs += len(dirs)
     no_files += len(files)

@@ -17,3 +17,16 @@ for root, dirs, files in os.walk('C:\\Users\\Ana\\Desktop\\Python'):
     total_size += file_size
 
 print('Total file size: ', total_size, 'bytes')
+print('................................................')
+import os
+
+start_dir = 'C:\\Users\\Ana\\Desktop\\Python'  # replace this with your local dir
+total_size = 0
+
+for root, dirs, files in os.walk(start_dir):
+    for file in files:
+        # total_size += os.path.getsize(f'{root}/{file}')  # this is an alternative
+        total_size += os.stat(f'{root}/{file}').st_size
+
+print('Path:', start_dir)
+print(f'Total size:', total_size)

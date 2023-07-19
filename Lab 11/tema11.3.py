@@ -9,14 +9,28 @@ no_dirs = 0
 no_files = 0
 
 for root, dirs, files in os.walk('C:\\Users\\Ana\\PycharmProjects\\folder pentru tema 11.3'):
-#     no_dirs += len(dirs)
-#     no_files += len(files)
-#     print('Path: ', root)
-# print('Nr. folders: ', no_dirs)
-# print('Nr. files: ', no_files)
+
     for file in files:
-        if file.lower().endswith('.py'):
+        # if file.lower().endswith('.py'):  # varianta 1
+        # if file.split('.')[-1].lower() == "py": # varianta 2
+        if file[-3:].lower()==".py":
             no_files += 1
             print(os.path.join(root, file))
+            print(no_files)
 
 print('Nr. Python files: ', no_files)
+
+print('........................................')
+import os
+
+nr_python_files = 0
+start_dir = '/'  # replace this with your local dir
+
+for root, dirs, files in os.walk(start_dir):
+    for file in files:
+        if file.lower().split('.')[-1] == 'py':
+            nr_python_files += 1
+            print(f'{root}/{file}')
+
+print('Nr. python files:', nr_python_files)
+

@@ -6,29 +6,32 @@
 print('Tema 11.5a')
 import os
 
-no_dirs = 0
-no_files = 0
 
-for root, dirs, files in os.walk('C:\\Users\\Ana\\PycharmProjects\\folder pentru tema 11.3'):
+def show_python_files(p):
+    if os.path.isfile(p):
+        if p.lower().split('.')[-1] == 'py':
+            print(p)
+    else:
+        for f in os.listdir(p):
+            show_python_files(os.path.join(p, f))
 
-    for file in files:
-        if file.lower().endswith('.py'):
-            no_files += 1
-            print(os.path.join(root, file))
 
-print('Nr. Python files: ', no_files)
-print('Tema 11.5b')
+start_dir = 'C:\\Users\\Ana\\Desktop\\Python'  # replace this with your local dir
+show_python_files(start_dir)
+print('Tema 11.5a')
 import os
 
-no_dirs = 0
-no_files = 0
-total_size = 0
 
-for root, dirs, files in os.walk('C:\\Users\\Ana\\Desktop\\Python'):
-    no_dirs += len(dirs)
-    no_files += len(files)
-    file_size = os.path.getsize(root)
-    print('Start dir:  ', root)
-    total_size += file_size
+def get_size(p):
+    if os.path.isfile(p):
+        return os.path.getsize(p)
+    else:
+        size = 0
+        for f in os.listdir(p):
+            size += get_size(os.path.join(p, f))
+        return size
 
-print('Total file size: ', total_size, 'bytes')
+
+start_dir = 'C:\\Users\\Ana\\Desktop\\Python'  # replace this with your local dir
+print('Path: ', start_dir)
+print('Total size: ', get_size(start_dir))
