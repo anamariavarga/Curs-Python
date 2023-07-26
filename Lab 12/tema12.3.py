@@ -17,3 +17,4 @@ elif p2 > p1:
     print("p2 este mai departe de centru decat p1")
 else:
     print("p1 si p2 sunt la acceasi distanta fata de centru")
+
