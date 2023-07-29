@@ -18,3 +18,5 @@ elif p2 > p1:
 else:
     print("p1 si p2 sunt la acceasi distanta fata de centru")
 
+q_x = float(input("x for q in cm: "))
+q_y = float(input("y for q in cm: "))
