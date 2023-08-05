@@ -16,8 +16,8 @@ p4 = Point(p4_x, p4_y)
 
 rectangle1 = Rectangle(p1, p2)
 rectangle2 = Rectangle(p3, p4)
-print(f'The {rectangle1} length and width are: ', rectangle1.get_rectangle_dimensions())
-print(f'The {rectangle2} length and width are: ', rectangle2.get_rectangle_dimensions())
+print(f'The {rectangle1} width and length are: ', rectangle1.get_rectangle_dimensions())
+print(f'The {rectangle2} width and length are: ', rectangle2.get_rectangle_dimensions())
 
 print("Both rectangles have the same dimensions? -> "
       , rectangle1.get_rectangle_dimensions() == rectangle2.get_rectangle_dimensions())

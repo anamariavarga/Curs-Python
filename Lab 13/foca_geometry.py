@@ -61,16 +61,25 @@ class Rectangle:
        p2 (tuple): Coordinates for point p2(x, y).
     """
 
-    def __init__(self, p1, p2):
+    def __init__(self, p1: Point, p2: Point):
         """
         Rectangle defined by two points: p1 and p2.
 
         Args:
-          p1 (tuple): Coordinates for point p1(x, y).
-          p2 (tuple): Coordinates for point p2(x, y).
+          p1 (Point): Coordinates for point p1(x, y).
+          p2 (Point): Coordinates for point p2(x, y).
         """
         self.p1 = p1
         self.p2 = p2
+        self.length = abs(self.p1.x - self.p2.x)
+        self.width = abs(self.p1.y - self.p2.y)
+
+    def __eq__(self, other):
+        if self.get_rectangle_dimensions() == other.get_rectangle_dimensions():
+            return True
+        else:
+            return False
+       # return sorted([self.width, self.length]) == sorted([self.width, self.length])
 
     def __str__(self):
         return f'Rectangle from {self.p1} to {self.p2}'
@@ -86,9 +95,9 @@ class Rectangle:
         Returns:
             tuple: A tuple containing the calculated length and width of the rectangle.
         """
-        length = self.p2.x - self.p1.x
-        width = self.p1.y - self.p2.y
-        return round(length, 2), round(width, 2)
+        # length = abs(self.p1.x - self.p2.x)
+        # width = abs(self.p1.y - self.p2.y)
+        return sorted([round(self.length, 2), round(self.width, 2)])
 
     def get_rectangle_area(self):
         """
@@ -110,7 +119,7 @@ class Rectangle:
         length, width = self.get_rectangle_dimensions()
         return round(2 * (length + width), 2)
 
-    def point_in_or_out_rectangle(self, q):
+    def point_in_or_out_rectangle(self, q: Point):
         """
         This method determines whether a given point q is inside or outside of a rectangle.
         The rectangle is defined by self.p1 and self.p2.
@@ -121,11 +130,16 @@ class Rectangle:
         Returns:
             None: This method does not return any value. It prints the result directly.
         """
-        if (self.p1.x <= q.x <= self.p2.x or self.p2.x <= q.x <= self.p1.x) and \
-                (self.p1.y <= q.y <= self.p2.y or self.p2.y <= q.y <= self.p1.y):
-            print(f'The point {q.x, q.y} is inside the rectangle')
-        else:
-            print(f'The point {q.x, q.y} is outside the rectangle')
+        # o varianta:
+        # if (self.p1.x <= q.x <= self.p2.x or self.p2.x <= q.x <= self.p1.x) and \
+        #         (self.p1.y <= q.y <= self.p2.y or self.p2.y <= q.y <= self.p1.y):
+        #     print(f'The point {q.x, q.y} is inside the rectangle')
+        # else:
+        #     print(f'The point {q.x, q.y} is outside the rectangle')
+        # alta varianta mai simpla:
+        lx = sorted([self.p1.x, self.p2.x])
+        ly = sorted([self.p1.y, self.p2.y])
+        return lx[0] <= q.x <= lx[1] and ly[0] <= q.y <= ly[1]
 
     def circle_in_or_out_rectangle(self, q, r):
         """
@@ -139,6 +153,7 @@ class Rectangle:
         Returns:
             None: This method does not return any value. It prints the result directly.
         """
+        # o varfianta:
         if (self.p1.x <= (q.x + r) <= self.p2.x or self.p2.x <= (q.x + r) <= self.p1.x) and \
                 (self.p1.y <= (q.y + r) <= self.p2.y or self.p2.y <= (q.y + r) <= self.p1.y):
             print(f'The circle with origin in {q.x, q.y} and radius {r} is inside the rectangle')
@@ -147,11 +162,12 @@ class Rectangle:
             print(f'The circle with origin in {q.x, q.y} and radius {r} is outside the rectangle')
             # return False
 
-    def __eq__(self, other):
-        if self.get_rectangle_dimensions() == other.get_rectangle_dimensions():
-            return True
-        else:
-            return False
+    #     # alta varianta mai simpla:
+    # def circle_in_or_out_rectangle(self, c:Circle):
+    #     lx = sorted([self.p1.x, self.p2.x])
+    #     ly = sorted([self.p1.y, self.p2.y])
+    #     return lx[0] <= c.x - c.r and c.x + c.r <= lx[1] \
+    #         and ly[0] <= c.y - c.r and c.y + c.r <= ly[1]
 
 
 if __name__ == '__main__':
