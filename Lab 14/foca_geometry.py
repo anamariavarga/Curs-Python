@@ -60,6 +60,8 @@ class Rectangle:
        p1 (tuple): Coordinates for point p1(x, y).
        p2 (tuple): Coordinates for point p2(x, y).
     """
+    instances = 0
+    square_instances = 0
 
     def __init__(self, p1: Point, p2: Point):
         """
@@ -73,18 +75,28 @@ class Rectangle:
         self.p2 = p2
         self.length = abs(self.p1.x - self.p2.x)
         self.width = abs(self.p1.y - self.p2.y)
+        Rectangle.instances += 1
+        if self.rectangle_square():
+            Rectangle.square_instances += 1
+
+    @staticmethod
+    def get_square_percent():
+        square_rectangles = (Rectangle.square_instances / Rectangle.instances) * 100
+        print(f'From the total numbers of rectangles, there are {round(square_rectangles,2)} % square created '
+              f'rectangles.')
 
     def __eq__(self, other):
         # if self.get_rectangle_dimensions() == other.get_rectangle_dimensions():
         #     return True
         # else:
         #     return False
-       # return sorted([self.width, self.length]) == sorted([self.width, self.length])
+        # return sorted([self.width, self.length]) == sorted([self.width, self.length])
         return sorted(self.get_rectangle_dimensions()) == sorted(other.get_rectangle_dimensions())
-    def __str__(self):
-        return f'Rectangle from {self.p1} to {self.p2}'
 
-    def get_rectangle_dimensions(self)-> list:
+    def __str__(self):
+        return f'Rectangle ( Point {self.p1}, Point {self.p2})'
+
+    def get_rectangle_dimensions(self) -> list:
         """
         This method calculate and return the dimensions of a rectangle.
         The rectangle is defined by two points.
@@ -158,7 +170,7 @@ class Rectangle:
         Returns:
             None: This method does not return any value. It prints the result directly.
         """
-        # o varfianta:
+        # o varianta:
         if (self.p1.x <= (q.x + r) <= self.p2.x or self.p2.x <= (q.x + r) <= self.p1.x) and \
                 (self.p1.y <= (q.y + r) <= self.p2.y or self.p2.y <= (q.y + r) <= self.p1.y):
             print(f'The circle with origin in {q.x, q.y} and radius {r} is inside the rectangle')
@@ -167,6 +179,11 @@ class Rectangle:
             print(f'The circle with origin in {q.x, q.y} and radius {r} is outside the rectangle')
             # return False
 
+    def rectangle_square(self):
+        if self.length == self.width:
+            return True
+        else:
+            return False
     #     # alta varianta mai simpla:
     # def circle_in_or_out_rectangle(self, c:Circle):
     #     lx = sorted([self.p1.x, self.p2.x])
@@ -175,41 +192,33 @@ class Rectangle:
     #         and ly[0] <= c.y - c.r and c.y + c.r <= ly[1]
 
 
+class WrongGeometry(Exception):
+    pass
+
+
+class Polyline:
+    def __init__(self, *args):
+        if type(args) != Point:
+            raise WrongGeometry('Variabila trebuie sa fie de tip Point(x,y)!')
+        # for arg in args:
+        #     if not isinstance(arg, Point):
+        #         raise WrongGeometry("Toate argumentele trebuie să fie de tipul Point.")
+        self.p = args
+
+    # def __str__(self):
+    #     p_list = ', Point'.join(str(p) for p in self.p)
+    #     return f'Polyline( Point {p_list})'
+
+    def __str__(self):
+        p_list = ', '.join(map(lambda p: 'Point ' + str(p), self.p))
+        return f'Polyline({p_list})'
+
+
 if __name__ == '__main__':
-    # p1_x = float(input("x for p1 in cm: "))
-    # p1_y = float(input("y for p1 in cm: "))
-    # p2_x = float(input("x for p2 in cm: : "))
-    # p2_y = float(input("y for p2 in cm: "))
-    # q_x = float(input("x for q in cm: "))
-    # q_y = float(input("y for q in cm: "))
-    # r = float(input("the circle radius is: "))
-    #
-    # p1 = Point(p1_x, p1_y)
-    # p2 = Point(p2_x, p2_y)
-    # q = Point(q_x, q_y)
-    #
-    # rectangle = Rectangle(p1, p2)
-    # print('The rectangle length and width are: ', rectangle.get_rectangle_dimensions())
-    # print('The rectangle area is: ', rectangle.get_rectangle_area())
-    # print('The rectangle perimeter is: ', rectangle.get_rectangle_perimeter())
-    # print(rectangle.point_in_or_out_rectangle(q))
-    # print(rectangle.circle_in_or_out_rectangle(q, r))
 
-    p1_x = float(input("x for p1 in cm: "))
-    p1_y = float(input("y for p1 in cm: "))
-    p2_x = float(input("x for p2 in cm: : "))
-    p2_y = float(input("y for p2 in cm: "))
-    p3_x = float(input("x for p3 in cm: "))
-    p3_y = float(input("y for p3 in cm: "))
-    p4_x = float(input("x for p4 in cm: : "))
-    p4_y = float(input("y for p4 in cm: "))
-
-    p1 = Point(p1_x, p1_y)
-    p2 = Point(p2_x, p2_y)
-    p3 = Point(p3_x, p3_y)
-    p4 = Point(p4_x, p4_y)
-
-    rectangle1 = Rectangle(p1, p2)
-    rectangle2 = Rectangle(p3, p4)
-    print(f'The {rectangle1} length and width are: ', rectangle1.get_rectangle_dimensions())
-    print(f'The {rectangle2} length and width are: ', rectangle2.get_rectangle_dimensions())
+    p2 = (-5, 7)
+    p3 = (4, 3)
+    p4 = (4, -6)
+    p5 = (8, -4)
+    polyline = Polyline(p1, p2, p3, p4, p5)
+    print(polyline)
