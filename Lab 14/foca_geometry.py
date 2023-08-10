@@ -1,6 +1,10 @@
 import math
 
 
+class WrongGeometry(Exception):
+    pass
+
+
 def absolute_value(a):
     if float(a) >= 0:
         return float(a)
@@ -15,7 +19,7 @@ class Point:
         self.y = y
 
     def __str__(self):
-        return f'({self.x}, {self.y})'
+        return f'Point ({self.x}, {self.y})'
 
     def get_distance(self):
         """
@@ -82,7 +86,7 @@ class Rectangle:
     @staticmethod
     def get_square_percent():
         square_rectangles = (Rectangle.square_instances / Rectangle.instances) * 100
-        print(f'From the total numbers of rectangles, there are {round(square_rectangles,2)} % square created '
+        print(f'From the total numbers of rectangles, there are {round(square_rectangles, 2)} % square created '
               f'rectangles.')
 
     def __eq__(self, other):
@@ -94,7 +98,7 @@ class Rectangle:
         return sorted(self.get_rectangle_dimensions()) == sorted(other.get_rectangle_dimensions())
 
     def __str__(self):
-        return f'Rectangle ( Point {self.p1}, Point {self.p2})'
+        return f'Rectangle ( {self.p1}, {self.p2})'
 
     def get_rectangle_dimensions(self) -> list:
         """
@@ -192,30 +196,52 @@ class Rectangle:
     #         and ly[0] <= c.y - c.r and c.y + c.r <= ly[1]
 
 
-class WrongGeometry(Exception):
-    pass
-
-
 class Polyline:
-    def __init__(self, *args):
-        if type(args) != Point:
-            raise WrongGeometry('Variabila trebuie sa fie de tip Point(x,y)!')
-        # for arg in args:
-        #     if not isinstance(arg, Point):
-        #         raise WrongGeometry("Toate argumentele trebuie să fie de tipul Point.")
-        self.p = args
-
-    # def __str__(self):
-    #     p_list = ', Point'.join(str(p) for p in self.p)
-    #     return f'Polyline( Point {p_list})'
+    def __init__(self, *points):
+        for p in points:
+            if type(p) != Point:
+                raise WrongGeometry('Variabila trebuie sa fie de tip Point(x,y)!')
+        self.points = points
+        # self.p = args
+        # for p in args:
+        #     # if not isinstance(p, Point): # not ok
+        #     if type(p) != Point:
+        #         raise WrongGeometry('Only points allowed in constructor')
+        # self.points = list(args)
 
     def __str__(self):
         p_list = ', '.join(map(lambda p: 'Point ' + str(p), self.p))
         return f'Polyline({p_list})'
 
 
-if __name__ == '__main__':
+class Segment:
 
+    def __init__(self, p1, p2):
+        self.p1 = p1
+        self.p2 = p2
+
+    def __repr__(self):
+        # Segment(Point(3, 4), Point(5, 6))
+        # return f'Segment(Point({self.p1.x}, {self.p1.y}), Point({self.p2.x}, {self.p2.y}))'
+        return f'Segment({self.p1}, {self.p2})'
+
+    def __lt__(self, other):
+        return self.get_length() < other.get_length()
+
+    def __le__(self, other):
+        return self.get_length() <= other.get_length()
+
+    def __gt__(self, other):
+        return self.get_length() > other.get_length()
+
+    def __ge__(self, other):
+        return self.get_length() >= other.get_length()
+
+    def get_length(self):
+        return round(((self.p1.x - self.p2.x) ** 2 + (self.p1.y - self.p2.y) ** 2) ** 0.5, 2)
+
+
+if __name__ == '__main__':
     p2 = (-5, 7)
     p3 = (4, 3)
     p4 = (4, -6)

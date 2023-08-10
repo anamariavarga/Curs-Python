@@ -8,3 +8,8 @@ p1 = Point(x1, y1)
 p2 = Point(x2, y2)
 rectangle = Rectangle(p1, p2)
 print(rectangle)
+
+print('................................')
+r = Rectangle(Point(2, 3), Point(6, 9))
+
+print(r)
