@@ -1,0 +1,7 @@
+Nume                 Prenume              Clasa
+------------------------------------------------
+Balint               Daniel                  9B
+Dobrea               Luca                    9C
+Ion                  Maria                   9A
+Mares                Ioana                   9A
+Popescu              George                  9B
