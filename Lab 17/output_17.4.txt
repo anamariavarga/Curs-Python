@@ -1,4 +1,4 @@
-Situatie elev: Popescu George            Clasa Note  Data evaluare       
+Situatie elev: Ion Maria                 Clasa Note  Data evaluare       
 -------------------------------------------------------------------------
-                                            9B    5              2023-04-05
-                                            9B   10              2023-06-04
+                                            9A    7              2023-05-07
+                                            9A    4              2023-06-04

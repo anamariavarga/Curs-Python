@@ -1,0 +1,8 @@
+Nume                 Prenume              Clasa
+-----------------------------------------------
+Ionescu              Iulia                  10a
+Pop                  Ionel                  10a
+Pop                  Gigel                   8b
+Popa                 Ionela                  8b
+Popescu              Ionut                   8b
+Popinciuc            Ionica                 5ca

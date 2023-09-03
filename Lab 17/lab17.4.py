@@ -25,10 +25,10 @@ with conn, conn.cursor() as c:
         JOIN
             "Class" c ON s."Class_id"  = c.id;'''
     c.execute(q1)
-    records = c.fetchall()
-    print(records)
+    result = c.fetchall()
+    print(result)
 lista_elevi = []
-lista_elevi = list(set([f'{item[0]} {item[1]}' for item in records]))
+lista_elevi = list(set([f'{item[0]} {item[1]}' for item in result]))
 print(lista_elevi)
 
 
@@ -41,9 +41,9 @@ else:
         print(f'{"Situatie elev: " + student_fullname:{2*n}} {"Clasa":{m}} {"Note":{m}} {"Data evaluare":{n}}',file=my_file)
         print('-' * (2*n + 2*m + n + 3), file=my_file)
 
-        for record in records:
-            if f'{record[0]} {record[1]}' == student_fullname:
-                output = f'{"":<{2*n}} {record[2]:>{m}}  {record[3]:^{m}}  {(record[4]).isoformat():>{n}}'
+        for elev in result:
+            if f'{elev[0]} {elev[1]}' == student_fullname:
+                output = f'{"":<{2*n}} {elev[2]:>{m}}  {elev[3]:^{m}}  {(elev[4]).isoformat():>{n}}'
                 print(output, file=my_file)
 
 

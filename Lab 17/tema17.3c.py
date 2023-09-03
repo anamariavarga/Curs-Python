@@ -12,7 +12,7 @@ conn = psycopg2.connect(
 # print('DB server version:', db_version)
 
 with conn, conn.cursor() as c:
-    q1 = '''select count(*)from "Student" s , Class c
+    q1 = '''select count(*)from "Student" s , "Class" c
         where s."Class_id"=c.id and c.class_letter like 'B';'''
     c.execute(q1)
     records = c.fetchone()
