@@ -1,0 +1,36 @@
+table#student td {
+    border: 1px solid lightgray;
+    padding: 10px;
+}
+
+table#student input.modify,
+table#student input.delete {
+    width: 70px;
+    border: 0px;
+    padding: 5px;
+    color: white;
+}
+
+table#student input.modify {
+    background-color: #337ab7;
+}
+
+table#student input.delete {
+    background-color: #d9534f;
+}
+
+table#student a {
+    text-decoration: none;
+    color: green;
+    font-weight: normal;
+}
+
+table#student a:hover {
+    text-decoration: underline;
+    color: orange;
+    font-weight: bold;
+}
+
+table#student td {
+    min-width: 150px;
+}
