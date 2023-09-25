@@ -1,0 +1,39 @@
+<html>
+<head>
+    <title>Title</title>
+    <link rel="stylesheet" href="css/style20.4.css" />
+    <script src="javascript/script4.js"></script>
+</head>
+<body>
+
+    <form>
+        <table>
+            <tr>
+                <td>
+                    Username<br/>
+                    <input type="text" id="username" name="username" placeholder="user" autocomplete="on"/>
+                    <div id="usernameEroare" style="color: red;"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Parola<br/>
+                    <input type="password" name="parola" placeholder="********"/>
+                    <div id="parolaEroare" style="color: red;"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Confirmare Parola<br/>
+                    <input type="password" name="confirmare parola" placeholder="********"/>
+                    <div id="confirmareParolaEroare" style="color: red;"></div>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Inregistrare" onclick="verify()"/></td>
+            </tr>
+        </table>
+    </form>
+
+</body>
+</html>

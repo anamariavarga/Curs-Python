@@ -1,0 +1,39 @@
+<html lang="en">
+<head>
+    <script src="js/tema20.4.js"></script>
+    <link rel="stylesheet" href="css/style20.4.css">
+</head>
+<body>
+<form>
+    <table>
+        <tr>
+            <td>
+                <input type="text" id="username" placeholder="username" autocomplete="off" />
+            </td>
+            <td>
+                <div id="div_username"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="password" id="password" placeholder="password" />
+            </td>
+            <td>
+                <div id="div_password"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input type="password" id="password_conf" placeholder="password confirm" />
+            </td>
+            <td>
+                <div id="div_password_conf"></div>
+            </td>
+        </tr>
+    </table>
+
+    <input type="button" onclick="valideaza()" value="Inregistrare" />
+    <div id="results"></div>
+</form>
+</body>
+</html>

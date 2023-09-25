@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>Title</title>
+    <link rel="stylesheet" href="css/style20.1.css" />
+</head>
+<body>
+    <form>
+        <table>
+            <tr>
+                <td>
+                    Username<br/>
+                    <input type="text" name="username" id="username" autocomplete="off" onfocus="changeBackgroundColor('username')" onblur="restoreBackgroundColor('username')"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Password<br/>
+                    <input type="password" name="password" id="password" onfocus="changeBackgroundColor('password')" onblur="restoreBackgroundColor('password')"/>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="checkbox" /> I agree with terms and conditions bla bla</td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="Login"/></td>
+            </tr>
+        </table>
+    </form>
+
+    <!-- Includeți fișierul JavaScript separat -->
+    <script src="javascript/js.js"></script>
+</body>
+</html>

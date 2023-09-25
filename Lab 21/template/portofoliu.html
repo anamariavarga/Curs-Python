@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+<html>
+<head>
+    <title>portofoliu</title>
+</head>
+<body>
+<h2>Portofoliul nostru</h2>
+<br/>
+<table cellpadding="1" border="1">
+    <tr>
+        <th rowspan="1"><img src="{{ url_for('static', filename='static/dedurizare.jpg') }}"></th>
+        <th><h4>Instalatii de dedurizare si filtrare a apei</h4></th>
+    </tr>
+    <tr>
+        <th rowspan="1"><img src="{{ url_for('static', filename='static/static/gaz.jpg') }}"></th>
+        <th><h4>Instalatii de alimentare cu gaz a locuintei</h4></th>
+    </tr>
+    <tr>
+        <th rowspan="1"><img src="{{ url_for('static', filename='instalatii.jpg') }}"></th>
+        <th><h4>Instalatii sanitare inca din faza de executie a locuintei.</h4></th>
+    </tr>
+
+</table>
+</body>
+</html>
+{% endblock content %}

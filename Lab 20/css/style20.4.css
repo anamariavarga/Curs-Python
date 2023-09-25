@@ -1,0 +1,22 @@
+input.checkbox {
+    width: 20px;
+
+}
+input[type="text"],
+input[type="parola"],
+input[type="confirmare parola"] {
+    width: 200px;
+    background-color: white;
+    transition: background-color 0.3s;
+}
+input[type="text"]:focus,
+input[type="parola"]:focus,
+input[type="confirmare parola"]:focus {
+    background-color: yellow;
+}
+
+
+
+td {
+    padding: 10px;
+}
