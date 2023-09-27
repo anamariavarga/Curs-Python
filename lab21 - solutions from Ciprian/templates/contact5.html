@@ -1,0 +1,21 @@
+{% extends "layout5.html" %}
+{% block content %}
+<table>
+    <tr>
+        <td>
+            Str. Pacii 12<br/>
+            Cluj Napoca, 786543<br>
+            Romania
+        </td>
+        <td>
+            <form name="contactform">
+                <input type="text" name="nume"><br>
+                <input type="email" name="email"><br>
+                <textarea name="mesaj"></textarea><br>
+                <input type="button" value="Trimite" onclick="validate()">
+            </form>
+        </td>
+    </tr>
+</table>
+
+{% endblock content %}

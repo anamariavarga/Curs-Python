@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div>Date elev</div>
+     <table border="1">
+          <head>
+          </head>
+          <body>
+              {% for student_id, student_data in student.items() %}
+                  <tr>
+                    <th>Nume</th>
+                    <td>{{student_data['lname']}}</td>
+                  </tr>
+                  <tr>
+                    <th>Prenume</th>
+                    <td>{{student_data['fname']}}</td>
+                  </tr>
+                  <tr>
+                    <th>Clasa</th>
+                    <td>{{student_data['class']}}</td>
+                  </tr>
+              {% endfor %}
+          </body>
+      </table>
+  <a href="/">Lista elevi</a>
+{% endblock content %}
+
+
+

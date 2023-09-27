@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div>Lista elevi</div>
+      <table border="1">
+          <head>
+              <tr>
+                  <th>Nume</th>
+                  <th>Clasa</th>
+              </tr>
+          </head>
+          <body>
+              {% for student_id, student_data in students.items() %}
+                  <tr>
+                    <td><a href="/student/{{ student_id }}">{{ student_data['lname'] }} {{ student_data['fname'] }}</a></td>
+                    <td>{{ student_data['class'] }}</td>
+                  </tr>
+              {% endfor %}
+          </body>
+      </table>
+    <hr>
+<form action="/search" method="GET">
+<input type="text" name="fname" placeholder="search"><br>
+<input type="submit">
+</form>
+  <a href="/">Main page</a>
+{% endblock content %}
