@@ -1,0 +1,19 @@
+<html>
+<head>
+   <link
+rel="stylesheet"
+href="{{ url_for('static', filename='style21.css') }}">
+   <script
+src="{{ url_for('static', filename='tema21.js') }}">
+   </script>
+</head>
+<body>
+  <div class="title"><h1>Magic Instal</h1></div>
+  <a href="/acasa">Acasa</a>
+  <a href="/portofoliu">Portofoliu</a>
+  <a href="/contact">Contact</a>
+  <br>
+  <hr/>
+  {% block content %}{% endblock %}
+</body>
+</html>

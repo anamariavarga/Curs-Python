@@ -1,0 +1,26 @@
+<html>
+
+<head>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</head>
+<body>
+
+<table>
+    <tr>
+        <td>
+            Str. Pacii 12<br/>
+            Cluj Napoca, 786543<br>
+            Romania
+        </td>
+        <td>
+            <form name="contactform">
+                <input type="text" name="nume"><br>
+                <input type="email" name="email"><br>
+                <textarea name="mesaj"></textarea><br>
+                <input type="button" value="Trimite" onclick="validate()">
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

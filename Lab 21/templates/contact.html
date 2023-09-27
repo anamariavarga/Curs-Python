@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block content %}
+<html>
+<head>
+    <title>Title</title>
+    <link rel="stylesheet" href="static/style21.css" />
+    <script src="static/tema21.js"></script>
+    <script src="static/def_formular.js"></script>
+</head>
+<body>
+    <form onsubmit="return validare_campuri()">
+        <table>
+            <tr>
+                <address>
+                    Ne puteti vizita virtual la: www.magicinstal.com<br>
+                    Sau la sediul nostru din:<br>
+                    Calea Bucuresti 149<br>
+                    Brasov, Romania
+                </address>
+            </tr>
+            <tr>
+                <td>
+                    Nume<br/>
+                    <input type="text" name="name" id="name"
+                           onfocus="focusElement('name')"
+                           onblur="blurElement('name')"
+                           placeholder="nume"
+                           autocomplete="off"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Email<br/>
+                    <input type="email" name="email" id="email"
+                           placeholder="aaa@example.bbb"
+                           onfocus="focusElement('email')"
+                           onblur="blurElement('email')"/>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Mesaj<br/>
+                    <input type="mesaj" name="mesaj" id="mesaj"
+                           placeholder="mesajul dumneavoastra"
+                           onfocus="focusElement('mesaj')"
+                           onblur="blurElement('mesaj')"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td><input type="submit" value="Trimite"/></td>
+            </tr>
+
+        </table>
+    </form>
+</body>
+</html>
+{% endblock content %}
