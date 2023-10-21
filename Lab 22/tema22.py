@@ -13,13 +13,13 @@ st = {
 @app.route('/')
 @app.route('/students/')
 def show_students():
-    return render_template('students.html', students=st)
+    return render_template('typesOfCars.html', students=st)
 
 
 @app.route('/student/<int:student_id>/')
 def show_student(student_id):
     if student_id in st:
-        return render_template('student.html', student=st[student_id])
+        return render_template('type_cars.html', student=st[student_id])
     return f"Nu exista student cu cheia {student_id}"
 
 

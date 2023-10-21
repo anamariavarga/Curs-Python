@@ -12,7 +12,7 @@ app = Flask('Amazing school app')
 
 conn = psycopg2.connect(
     host="localhost",
-    database="myfirstdb",
+    database="exemplu",
     user="postgres",      # change with your local user
     password="Sofilica$9")  # change with your local password
 
@@ -22,7 +22,7 @@ conn = psycopg2.connect(
 def show_home():
     """Shows the home template"""
 
-    return render_template('layouts/home.html')
+    return render_template('home.html')
 
 
 @app.route('/students/')
@@ -42,7 +42,7 @@ def show_students():
         c.execute(query)
         records = c.fetchall()
 
-    return render_template('layouts/students.html',
+    return render_template('students.html',
                            title='Elevii scolii noastre',
                            students=records)
 
@@ -67,7 +67,7 @@ def show_student(student_id):
             title = f'{record[1]} {record[2]}'
         else:
             title = 'Elev inexistent'
-    return render_template('layouts/student.html',
+    return render_template('student.html',
                            title=title,
                            student=record)
 
@@ -97,7 +97,7 @@ def search_students():
         c.execute(query, (f'%{search}%', f'%{search}%'))
         records = c.fetchall()
 
-    return render_template('layouts/students.html',
+    return render_template('students.html',
                            title='Elevii scolii noastre',
                            students=records,
                            search=search)
@@ -117,7 +117,7 @@ def show_classes():
         c.execute(query)
         records = c.fetchall()
 
-    return render_template('layouts/classes.html', classes=records)
+    return render_template('classes.html', classes=records)
 
 
 @app.route('/class/<int:class_id>/')
@@ -141,13 +141,13 @@ def show_class(class_id):
         else:
             class_name = None
 
-    return render_template('layouts/class.html', students=records, class_name=class_name, title='Clasa ' + class_name)
+    return render_template('class.html', students=records, class_name=class_name, title='Clasa ' + class_name)
 
 
 @app.route('/contact/')
 def contact():
     """Display contact form"""
-    return render_template('layouts/contact.html', title='Contact')
+    return render_template('contact.html', title='Contact')
 
 
 @app.errorhandler(404)
